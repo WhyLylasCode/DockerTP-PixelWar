@@ -1,0 +1,49 @@
+namespace: pixel-war
+
+backend:
+  replicaCount: 2
+  image:
+    repository: wiameelalami/pixel-war-backend
+    tag: latest
+    pullPolicy: Always
+  service:
+    type: ClusterIP
+    port: 3000
+  env:
+    PORT: "3000"
+    NODE_ENV: "production"
+    GRID_WIDTH: "32"
+    GRID_HEIGHT: "32"
+    DEFAULT_COLOR: "#FFFFFF"
+    CORS_ORIGIN: "*"
+    REDIS_URL: "redis://redis:6379"
+    DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/pixelwar"
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
+
+postgres:
+  image:
+    repository: postgres
+    tag: "15-alpine"
+    pullPolicy: IfNotPresent
+  service:
+    port: 5432
+  storage:
+    size: 1Gi
+  auth:
+    user: postgres
+    password: postgres
+    database: pixelwar
+
+redis:
+  image:
+    repository: redis
+    tag: "7-alpine"
+    pullPolicy: IfNotPresent
+  service:
+    port: 6379

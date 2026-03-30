@@ -1,6 +1,0 @@
-backend:
-  replicaCount: 2
-  image:
-    repository: wiameelalami/pixel-war-backend
-    tag: latest
-    pullPolicy: Always  

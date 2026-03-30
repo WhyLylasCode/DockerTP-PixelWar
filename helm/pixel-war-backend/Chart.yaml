@@ -1,0 +1,6 @@
+apiVersion: v2
+name: pixel-war-backend
+description: Helm chart for Pixel War backend with PostgreSQL and Redis
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

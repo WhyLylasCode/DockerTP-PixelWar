@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: {{ .Values.namespace }}
+data:
+  PORT: "3000"
+  NODE_ENV: "production"
+  GRID_WIDTH: "32"
+  GRID_HEIGHT: "32"
+  DEFAULT_COLOR: "#FFFFFF"
+  CORS_ORIGIN: "*"
+  REDIS_URL: "redis://redis:6379"
+  DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/pixelwar"
